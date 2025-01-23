@@ -8,7 +8,7 @@
     "start": "next start -p 5173",
     "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,css,scss,html,json,md}'",
-		"lint-staged": "lint-staged",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {

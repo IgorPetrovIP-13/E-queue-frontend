@@ -1,3 +1,3 @@
 export interface IUploadFileRes {
-	cdnUrl: string;
+  cdnUrl: string;
 }

@@ -89,12 +89,20 @@ export default function CreateOrganizationPage() {
     mutationFn: (data: ICreateOrganizationRequestReq) =>
       organizationRequestService.create(data),
     onSuccess: () => {
-			openToast("success", "Заявку на організацію успішно створено", "Вона з'явиться в списку заявок на організацію");
+      openToast(
+        "success",
+        "Заявку на організацію успішно створено",
+        "Вона з'явиться в списку заявок на організацію"
+      );
       router.push(ROUTES.ORGANIZATION_REQUESTS);
       reset();
     },
     onError: error => {
-			openToast("danger", "Помилка створення заявки на організацію", formatAxiosError(error));
+      openToast(
+        "danger",
+        "Помилка створення заявки на організацію",
+        formatAxiosError(error)
+      );
     }
   });
 

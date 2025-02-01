@@ -9,9 +9,9 @@ interface IToastProps {
 const UiToast = (props: IToastProps) => {
   return (
     <Alert
-      title={props.title}
-      description={props.description}
       color={props.color}
+      description={props.description}
+      title={props.title}
       variant="flat"
     />
   );

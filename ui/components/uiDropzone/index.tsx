@@ -18,6 +18,7 @@ const UiDropzone = (props: IDropzone) => {
     maxSize: 5 * 1024 * 1024,
     onDrop: acceptedFiles => {
       const file = acceptedFiles[0] || null;
+
       props.onChange(file);
     }
   });
@@ -25,7 +26,9 @@ const UiDropzone = (props: IDropzone) => {
   useEffect(() => {
     if (props.value) {
       const objectUrl = URL.createObjectURL(props.value);
+
       setPreview(objectUrl);
+
       return () => URL.revokeObjectURL(objectUrl);
     }
   }, [props.value]);
@@ -39,11 +42,11 @@ const UiDropzone = (props: IDropzone) => {
       <div className="flex flex-col h-full gap-2 items-center justify-center">
         {preview ? (
           <Image
-            width={250}
-            radius="sm"
-            src={preview}
             isBlurred
             isZoomed
+            radius="sm"
+            src={preview}
+            width={250}
           />
         ) : (
           <FileSearch size={40} />

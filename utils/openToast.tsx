@@ -1,5 +1,6 @@
-import UiToast from "@/ui/components/uiToast";
 import { toast } from "sonner";
+
+import UiToast from "@/ui/components/uiToast";
 
 type ToastVariant = "info" | "success" | "warning" | "danger";
 type NewVariant = "primary" | "success" | "warning" | "danger";
@@ -10,6 +11,7 @@ export const openToast = (
   description?: string
 ) => {
   let newVariant: NewVariant;
+
   if (variant === "info") {
     newVariant = "primary";
   } else {
@@ -17,9 +19,9 @@ export const openToast = (
   }
   toast(
     <UiToast
-      title={title}
-			description={description}
       color={newVariant}
+      description={description}
+      title={title}
     />
   );
 };

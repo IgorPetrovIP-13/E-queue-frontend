@@ -35,12 +35,12 @@ export default function SignUpPage() {
     mutationKey: ["signUp"],
     mutationFn: (data: ISignUpReq) => authService.signUp(data),
     onSuccess: data => {
-			openToast("success", `Ласкаво просимо на платформу, ${data.name}!`);
+      openToast("success", `Ласкаво просимо на платформу, ${data.name}!`);
       router.push(ROUTES.DASHBOARD);
       reset();
     },
     onError: error => {
-			openToast("danger", "Помилка реєстрації", formatAxiosError(error));
+      openToast("danger", "Помилка реєстрації", formatAxiosError(error));
     }
   });
 

@@ -1,21 +1,22 @@
 import { IUploadFileRes } from "@/types/services/upload-file-types";
 
 class UploadFileService {
-	private readonly BASE_URL = "/api/upload";
+  private readonly BASE_URL = "/api/upload";
 
-	async uploadFile(file: File) {
-		const formData = new FormData();
-		formData.append("file", file);
+  async uploadFile(file: File) {
+    const formData = new FormData();
 
-		const response = await fetch(this.BASE_URL, {
-			method: "POST",
-			body: formData,
-		});
+    formData.append("file", file);
 
-		const json: IUploadFileRes = await response.json();
+    const response = await fetch(this.BASE_URL, {
+      method: "POST",
+      body: formData
+    });
 
-		return json.cdnUrl;
-	}
+    const json: IUploadFileRes = await response.json();
+
+    return json.cdnUrl;
+  }
 }
 
 export const uploadFileService = new UploadFileService();

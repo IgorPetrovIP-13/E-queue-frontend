@@ -27,7 +27,6 @@ export function Providers({ children, themeProps }: ProvidersProps) {
             duration={2500}
             position="bottom-right"
             theme="dark"
-            visibleToasts={1}
             toastOptions={{
               style: {
                 backgroundColor: "transparent",
@@ -35,6 +34,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
                 border: "none"
               }
             }}
+            visibleToasts={1}
           />
         </NextThemesProvider>
       </HeroUIProvider>

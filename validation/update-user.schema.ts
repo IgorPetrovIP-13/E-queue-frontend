@@ -1,9 +1,10 @@
+import { z } from "zod";
+
 import {
   invalidFormat,
   long,
   short
 } from "@/common/constants/validation-errors.constants";
-import { z } from "zod";
 
 export const updateUserSchema = z.object({
   avatar: z.instanceof(File).nullable(),

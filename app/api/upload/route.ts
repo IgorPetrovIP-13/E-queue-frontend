@@ -1,15 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
- 
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as Blob | null;
 
     if (!file) {
-      return NextResponse.json({ error: "Файл для завантаження відсутній" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Файл для завантаження відсутній" },
+        { status: 400 }
+      );
     }
 
     const uploadData = new FormData();
+
     uploadData.append(
       "UPLOADCARE_PUB_KEY",
       process.env.NEXT_PUBLIC_UPLOADCARE_PUBLIC_KEY || ""
@@ -35,9 +39,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ cdnUrl });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Помилка сервера" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Помилка сервера" }, { status: 500 });
   }
 }

@@ -30,7 +30,7 @@ export default function LogoutButton() {
       router.push(ROUTES.WELCOME);
     },
     onError: error => {
-			openToast("danger", "Помилка виходу", formatAxiosError(error));
+      openToast("danger", "Помилка виходу", formatAxiosError(error));
     }
   });
 

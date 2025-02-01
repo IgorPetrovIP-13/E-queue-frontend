@@ -5,7 +5,7 @@ import {
   GitPullRequestArrow,
   House,
   NotebookPen,
-	UserPen
+  UserPen
 } from "lucide-react";
 
 import { ROUTES } from "./routes-enum";
@@ -16,10 +16,10 @@ type RouteValue = {
 };
 
 export const RoutesValues: Record<string, RouteValue> = {
-	[ROUTES.PROFILE]: {
-		title: "Мій профіль",
-		icon: UserPen
-	},
+  [ROUTES.PROFILE]: {
+    title: "Мій профіль",
+    icon: UserPen
+  },
   [ROUTES.DASHBOARD]: {
     title: "Дашборд",
     icon: House

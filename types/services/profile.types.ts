@@ -1,6 +1,6 @@
 export interface IGetProfileRes {
   _id: string;
-	avatar: string | null;
+  avatar: string | null;
   name: string;
   surname: string;
   email: string;

@@ -12,7 +12,7 @@ export function useProfile() {
   const { data, isLoading } = useQuery<Profile>({
     queryKey: ["profile"],
     queryFn: () => profileService.getProfile(),
-    initialData: () => cachedProfile,
+    initialData: () => cachedProfile
   });
 
   return { data, isLoading };

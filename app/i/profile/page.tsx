@@ -1,16 +1,18 @@
 "use client";
 
-import { useProfile } from "@/common/hooks/useProfile";
-import { getRouteValue } from "@/utils/getRouteValue";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import { usePathname } from "next/navigation";
-import UpdateProfileForm from "@/components/i/profile/UpdateProfileForm";
-import { IFormValues } from "@/types/forms/update-user-form";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { IPayload } from "./page.types";
+
+import { useProfile } from "@/common/hooks/useProfile";
+import { getRouteValue } from "@/utils/getRouteValue";
+import UpdateProfileForm from "@/components/i/profile/UpdateProfileForm";
+import { IFormValues } from "@/types/forms/update-user-form";
 import { updateUserSchema } from "@/validation/update-user.schema";
 import { uploadFileService } from "@/services/upload-file.service";
-import { IPayload } from "./page.types";
 
 export default function ProfilePage() {
   const { data } = useProfile();
@@ -22,8 +24,8 @@ export default function ProfilePage() {
     name: data?.name || "",
     surname: data?.surname || "",
     email: data?.email || "",
-		password: "",
-		confirmPassword: ""
+    password: "",
+    confirmPassword: ""
   };
 
   const {
@@ -38,16 +40,17 @@ export default function ProfilePage() {
 
   const onSubmit: SubmitHandler<IFormValues> = async (values: IFormValues) => {
     const payload: IPayload = {
-			password: values.password,
+      password: values.password,
       name: values.name,
       surname: values.surname,
       email: values.email,
       avatar: null
     };
+
     if (values.avatar) {
       payload.avatar = await uploadFileService.uploadFile(values.avatar);
-		}
-		console.log(payload);
+    }
+    console.log(payload);
   };
 
   return (
@@ -61,13 +64,13 @@ export default function ProfilePage() {
       <Divider />
       <CardBody>
         <UpdateProfileForm
-          handleSubmit={handleSubmit}
-          onSubmit={onSubmit}
           control={control}
           dirtyFields={dirtyFields}
           errors={errors}
+          handleSubmit={handleSubmit}
           isSubmitting={isSubmitting}
           isValid={isValid}
+          onSubmit={onSubmit}
         />
       </CardBody>
     </Card>

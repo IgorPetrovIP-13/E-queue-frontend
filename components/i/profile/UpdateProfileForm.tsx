@@ -1,10 +1,7 @@
 "use client";
 
-import { IFormValues } from "@/types/forms/update-user-form";
-import UiDropzone from "@/ui/components/uiDropzone";
 import { Button } from "@heroui/button";
-import { Divider, Input } from "@heroui/react";
-import { useRouter } from "next/router";
+import { Input } from "@heroui/react";
 import {
   Control,
   Controller,
@@ -12,6 +9,9 @@ import {
   SubmitHandler,
   UseFormHandleSubmit
 } from "react-hook-form";
+
+import UiDropzone from "@/ui/components/uiDropzone";
+import { IFormValues } from "@/types/forms/update-user-form";
 
 interface IUpdateProfileForm {
   onSubmit: SubmitHandler<IFormValues>;

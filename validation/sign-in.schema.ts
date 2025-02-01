@@ -1,12 +1,13 @@
+import { invalidFormat, long, short } from "@/common/constants/validation-errors.constants";
 import { z } from "zod";
 
 export const signInSchema = z.object({
   email: z
     .string()
-    .email("Невірний формат email")
-    .max(255, "Максимальна довжина 255 символів"),
+    .email(invalidFormat)
+    .max(255, long(255)),
   password: z
     .string()
-    .min(6, "Мінімальна довжина 6 символів")
-    .max(25, "Максимальна довжина 25 символів")
+    .min(6, short(6))
+    .max(25, long(25))
 });

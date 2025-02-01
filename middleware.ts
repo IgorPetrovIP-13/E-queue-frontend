@@ -9,11 +9,19 @@ export async function middleware(request: NextRequest) {
 
   const refreshToken = cookies.get(TokensEnum.REFRESH_TOKEN)?.value;
 
-  const isAuthRoute = [`${ROUTES.SIGN_IN}`, `${ROUTES.SIGN_UP}`].includes(
+	const isApiRoute = pathname.startsWith('/api/');
+	const isAuthRoute = [`${ROUTES.SIGN_IN}`, `${ROUTES.SIGN_UP}`].includes(
     pathname
   );
   const isProtectedRoute =
     ![`${ROUTES.WELCOME}`].includes(pathname) && pathname.startsWith("/i/");
+
+	if (isApiRoute) {
+    if (!refreshToken) {
+			return NextResponse.redirect(new URL(ROUTES.SIGN_IN, url))
+    }
+    return NextResponse.next();
+  }
 
   if ((isAuthRoute || !isProtectedRoute) && refreshToken) {
     return NextResponse.redirect(new URL(ROUTES.DASHBOARD, url));

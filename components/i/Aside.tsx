@@ -27,7 +27,7 @@ export default function Aside() {
           href={ROUTES.PROFILE}
         >
           <User
-            avatarProps={{ src: "/pudge.png" }}
+            avatarProps={{ src: "/user.svg" }}
             className="justify-start"
             description={
               <span className="hidden lg:inline">{data?.email}</span>

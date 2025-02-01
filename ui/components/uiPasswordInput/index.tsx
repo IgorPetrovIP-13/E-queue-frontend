@@ -34,7 +34,7 @@ const UiPasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
             )}
           </button>
         }
-        helperText={errorMessage}
+        errorMessage={errorMessage}
         isInvalid={!!errorMessage}
         type={isVisible ? "text" : "password"}
       />

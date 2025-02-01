@@ -2,13 +2,11 @@
 
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import { usePathname, useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 
-import { RoutesValues } from "@/common/enums/routes-values";
 import CreateOrganizationForm from "@/components/i/create-organization/CreateOrganizationForm";
 import { formatAxiosError } from "@/common/axios/error";
 import {
@@ -23,6 +21,8 @@ import { organizationTypeService } from "@/services/organization-type.service";
 import { connectionTypeService } from "@/services/connection-type.service";
 import { IAutocompleteData } from "@/types/generic/autocomplete-data.types";
 import { preSendClear } from "@/utils/preSendClear";
+import { openToast } from "@/utils/openToast";
+import { getRouteValue } from "@/utils/getRouteValue";
 
 export default function CreateOrganizationPage() {
   const [organizationTypes, setOrganizationTypes] = useState<
@@ -35,7 +35,7 @@ export default function CreateOrganizationPage() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const { title, icon: Icon } = RoutesValues[pathname];
+  const { title, icon: Icon } = getRouteValue(pathname);
 
   useEffect(() => {
     async function fetchData() {
@@ -48,7 +48,11 @@ export default function CreateOrganizationPage() {
         setOrganizationTypes(organizationTypes);
         setConnectionTypes(connectionTypes);
       } catch (error) {
-        toast(formatAxiosError(error));
+        openToast(
+          "danger",
+          "Помилка завантаження даних",
+          formatAxiosError(error)
+        );
       }
     }
     fetchData();
@@ -85,17 +89,17 @@ export default function CreateOrganizationPage() {
     mutationFn: (data: ICreateOrganizationRequestReq) =>
       organizationRequestService.create(data),
     onSuccess: () => {
-      toast("Заявку на організацію успішно створено");
+			openToast("success", "Заявку на організацію успішно створено", "Вона з'явиться в списку заявок на організацію");
       router.push(ROUTES.ORGANIZATION_REQUESTS);
       reset();
     },
     onError: error => {
-      toast(formatAxiosError(error));
+			openToast("danger", "Помилка створення заявки на організацію", formatAxiosError(error));
     }
   });
 
   return (
-    <Card className="w-full">
+    <Card className="animate-slideInDown w-full">
       <CardHeader className="flex justify-between">
         <div className="flex items-center gap-2">
           <Icon size={21} />

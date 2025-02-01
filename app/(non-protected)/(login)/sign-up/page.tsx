@@ -5,7 +5,6 @@ import { Divider } from "@heroui/divider";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRoundPlus } from "lucide-react";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
@@ -16,6 +15,7 @@ import { authService } from "@/services/auth/auth.service";
 import { ROUTES } from "@/common/enums/routes-enum";
 import { formatAxiosError } from "@/common/axios/error";
 import { ISignUpReq } from "@/types/services/auth.types";
+import { openToast } from "@/utils/openToast";
 
 export default function SignUpPage() {
   const {
@@ -35,12 +35,12 @@ export default function SignUpPage() {
     mutationKey: ["signUp"],
     mutationFn: (data: ISignUpReq) => authService.signUp(data),
     onSuccess: data => {
-      toast("Ласкаво просимо на платформу, " + data.name + "!");
+			openToast("success", `Ласкаво просимо на платформу, ${data.name}!`);
       router.push(ROUTES.DASHBOARD);
       reset();
     },
     onError: error => {
-      toast(formatAxiosError(error));
+			openToast("danger", "Помилка реєстрації", formatAxiosError(error));
     }
   });
 

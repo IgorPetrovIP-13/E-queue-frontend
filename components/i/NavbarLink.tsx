@@ -2,7 +2,7 @@ import { Link } from "@heroui/link";
 import { usePathname } from "next/navigation";
 
 import { ROUTES } from "@/common/enums/routes-enum";
-import { RoutesValues } from "@/common/enums/routes-values";
+import { getRouteValue } from "@/utils/getRouteValue";
 
 interface INavbarLink {
   href: ROUTES;
@@ -10,7 +10,7 @@ interface INavbarLink {
 
 export default function NavbarLink(props: INavbarLink) {
   const pathname = usePathname();
-  const { title, icon: Icon } = RoutesValues[props.href];
+  const { title, icon: Icon } = getRouteValue(props.href);
 
   return (
     <Link

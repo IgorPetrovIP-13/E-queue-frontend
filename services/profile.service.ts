@@ -1,11 +1,11 @@
 import { axiosWithCredentialsInstance } from "@/common/axios/interceptors";
-import { GetProfileRes } from "@/types/services/profile.types";
+import { IGetProfileRes } from "@/types/services/profile.types";
 
 class ProfileService {
   private readonly BASE_URL = "/profile";
 
   async getProfile() {
-    const response = await axiosWithCredentialsInstance.get<GetProfileRes>(
+    const response = await axiosWithCredentialsInstance.get<IGetProfileRes>(
       `${this.BASE_URL}`
     );
 

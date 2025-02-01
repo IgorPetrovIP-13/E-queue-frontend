@@ -12,11 +12,11 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { LogOut, TriangleAlert } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 
 import { authService } from "@/services/auth/auth.service";
 import { ROUTES } from "@/common/enums/routes-enum";
 import { formatAxiosError } from "@/common/axios/error";
+import { openToast } from "@/utils/openToast";
 
 export default function LogoutButton() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function LogoutButton() {
       router.push(ROUTES.WELCOME);
     },
     onError: error => {
-      toast(formatAxiosError(error));
+			openToast("danger", "Помилка виходу", formatAxiosError(error));
     }
   });
 

@@ -6,7 +6,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRoundSearch } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 
 import { initialValues, IFormValues } from "@/types/forms/sign-in-form.types";
 import { authService } from "@/services/auth/auth.service";
@@ -14,6 +13,7 @@ import SignInForm from "@/components/non-ptotected/login/sign-in/SignInForm";
 import { signInSchema } from "@/validation/sign-in.schema";
 import { ROUTES } from "@/common/enums/routes-enum";
 import { formatAxiosError } from "@/common/axios/error";
+import { openToast } from "@/utils/openToast";
 
 export default function SignInPage() {
   const {
@@ -40,7 +40,7 @@ export default function SignInPage() {
       router.push(ROUTES.DASHBOARD);
       reset();
     } catch (error) {
-      toast(formatAxiosError(error));
+      openToast("danger", "Помилка входу", formatAxiosError(error));
     }
   };
 

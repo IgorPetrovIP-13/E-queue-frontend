@@ -41,7 +41,7 @@ export default function Navbar() {
             href={ROUTES.PROFILE}
           >
             <User
-              avatarProps={{ src: "/pudge.png" }}
+              avatarProps={{ src: "/user.svg" }}
               className="justify-end flex-row-reverse"
               description={data?.email}
               name={

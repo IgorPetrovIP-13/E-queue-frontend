@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import clsx from "clsx";
-import { Toaster } from "sonner";
 
 import { Providers } from "./providers";
 
@@ -43,15 +42,6 @@ export default function RootLayout({
       >
         <Providers>
           {children}
-          <Toaster
-            duration={2500}
-            position="bottom-right"
-            theme="dark"
-            toastOptions={{
-              className:
-                "bg-default-50 text-foreground text-sm shadow-default-100 shadow-inner border-0"
-            }}
-          />
         </Providers>
       </body>
     </html>

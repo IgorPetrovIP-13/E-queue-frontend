@@ -1,5 +1,6 @@
-import Header from "@/components/non-ptotected/Header";
 import { TrendingUpDown } from "lucide-react";
+
+import Header from "@/components/non-ptotected/Header";
 
 export default function NonProtectedLayout({
   children

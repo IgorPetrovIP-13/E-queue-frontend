@@ -9,10 +9,10 @@ import {
   SubmitHandler,
   UseFormHandleSubmit
 } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import UiDropzone from "@/ui/components/uiDropzone";
 import { IFormValues } from "@/types/forms/update-user-form";
-import { useRouter } from "next/navigation";
 import UiPasswordInput from "@/ui/components/uiPasswordInput";
 
 interface IUpdateProfileForm {

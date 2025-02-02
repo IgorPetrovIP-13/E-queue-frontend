@@ -45,8 +45,8 @@ export const RoutesValues: Record<string, RouteValue> = {
     title: "Заявки організацій",
     icon: GitPullRequestArrow
   },
-	[ROUTES.ORGANIZATION_INVITES]: {
-		title: "Запрошення",
-		icon: MailPlus
-	}
+  [ROUTES.ORGANIZATION_INVITES]: {
+    title: "Запрошення",
+    icon: MailPlus
+  }
 };

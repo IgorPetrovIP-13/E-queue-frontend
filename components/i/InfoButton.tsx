@@ -1,10 +1,8 @@
 "use client";
 
-import {
-  Button,
-  useDisclosure
-} from "@heroui/react";
+import { Button, useDisclosure } from "@heroui/react";
 import { Info } from "lucide-react";
+
 import InfoModal from "./InfoModal";
 
 export default function InfoButton() {
@@ -24,7 +22,10 @@ export default function InfoButton() {
           <span className="inline md:hidden lg:inline">Про сервіс</span>
         </div>
       </Button>
-			<InfoModal isOpen={isOpen} onOpenChange={onOpenChange}/>
+      <InfoModal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      />
     </>
   );
 }

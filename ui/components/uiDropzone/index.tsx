@@ -26,11 +26,13 @@ const UiDropzone = (props: IDropzone) => {
   useEffect(() => {
     if (props.value && typeof props.value !== "string") {
       const objectUrl = URL.createObjectURL(props.value);
+
       setPreview(objectUrl);
+
       return () => URL.revokeObjectURL(objectUrl);
     } else if (props.value) {
-			setPreview(props.value);
-		}
+      setPreview(props.value);
+    }
   }, [props.value]);
 
   return (

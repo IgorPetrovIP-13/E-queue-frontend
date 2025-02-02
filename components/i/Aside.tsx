@@ -51,9 +51,9 @@ export default function Aside() {
             <div className="flex flex-col gap-1">
               <Divider />
               <AsideLink href={ROUTES.CREATE_ORGANIZATION} />
-							<AsideLink href={ROUTES.ORGANIZATION_REQUESTS} />
+              <AsideLink href={ROUTES.ORGANIZATION_REQUESTS} />
               <AsideLink href={ROUTES.MY_ORGANIZATIONS} />
-							<AsideLink href={ROUTES.ORGANIZATION_INVITES} />
+              <AsideLink href={ROUTES.ORGANIZATION_INVITES} />
             </div>
           </div>
           <div className="flex flex-col gap-2">

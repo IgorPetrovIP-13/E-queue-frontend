@@ -1,12 +1,16 @@
-import { ROUTES } from "@/common/enums/routes-enum";
 import { Button } from "@heroui/button";
 import { NavbarBrand, NavbarContent, NavbarItem, Navbar } from "@heroui/navbar";
 import { TrendingUpDown } from "lucide-react";
 import Link from "next/link";
 
+import { ROUTES } from "@/common/enums/routes-enum";
+
 export default function Header() {
   return (
-    <Navbar shouldHideOnScroll maxWidth="full">
+    <Navbar
+      shouldHideOnScroll
+      maxWidth="full"
+    >
       <NavbarBrand>
         <Link
           className="flex items-center gap-2"
@@ -19,7 +23,7 @@ export default function Header() {
       <NavbarContent justify="end">
         <NavbarItem>
           <Link
-						className="text-primary"
+            className="text-primary"
             href={ROUTES.SIGN_IN}
           >
             Увійти

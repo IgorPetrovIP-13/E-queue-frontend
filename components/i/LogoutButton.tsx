@@ -1,18 +1,17 @@
 "use client";
 
 import { Button } from "@heroui/button";
-import {
-  useDisclosure
-} from "@heroui/react";
+import { useDisclosure } from "@heroui/react";
 import { useMutation } from "@tanstack/react-query";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+
+import LogoutModal from "./LogoutModal";
 
 import { authService } from "@/services/auth/auth.service";
 import { ROUTES } from "@/common/enums/routes-enum";
 import { formatAxiosError } from "@/common/axios/error";
 import { openToast } from "@/utils/openToast";
-import LogoutModal from "./LogoutModal";
 
 export default function LogoutButton() {
   const router = useRouter();
@@ -51,9 +50,9 @@ export default function LogoutButton() {
       </Button>
       <LogoutModal
         isOpen={isOpen}
+        isSubmitting={isPending}
+        onOpenChange={onOpenChange}
         onSubmit={onClose => handleLogout(onClose)}
-				onOpenChange={onOpenChange}
-				isSubmitting={isPending}
       />
     </>
   );

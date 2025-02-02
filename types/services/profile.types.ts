@@ -8,11 +8,11 @@ export interface IGetProfileRes {
 }
 
 export interface IUpdateProfileReq {
-	avatar: string | null;
-	name: string;
-	surname: string;
-	email: string;
-	password?: string;
+  avatar: string | null;
+  name: string;
+  surname: string;
+  email: string;
+  password?: string;
 }
 
 export interface IUpdateProfileRes extends IGetProfileRes {}

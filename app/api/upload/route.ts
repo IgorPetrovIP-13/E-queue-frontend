@@ -39,6 +39,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ cdnUrl });
   } catch (error) {
-    return NextResponse.json({ error: "Помилка сервера" }, { status: 500 });
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }

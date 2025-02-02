@@ -39,6 +39,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ cdnUrl });
   } catch (error) {
+		console.error(error);
     return NextResponse.json({ error: "Помилка сервера" }, { status: 500 });
   }
 }

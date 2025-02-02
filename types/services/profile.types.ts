@@ -6,3 +6,13 @@ export interface IGetProfileRes {
   email: string;
   role: string;
 }
+
+export interface IUpdateProfileReq {
+	avatar: string | null;
+	name: string;
+	surname: string;
+	email: string;
+	password?: string;
+}
+
+export interface IUpdateProfileRes extends IGetProfileRes {}

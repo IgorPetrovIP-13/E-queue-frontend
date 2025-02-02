@@ -3,5 +3,5 @@ export interface IPayload {
   surname: string;
   email: string;
   avatar: string | null;
-  password: string;
+  password?: string;
 }

@@ -4,6 +4,7 @@ import {
   CalendarPlus,
   GitPullRequestArrow,
   House,
+  MailPlus,
   NotebookPen,
   UserPen
 } from "lucide-react";
@@ -43,5 +44,9 @@ export const RoutesValues: Record<string, RouteValue> = {
   [ROUTES.ORGANIZATION_REQUESTS]: {
     title: "Заявки організацій",
     icon: GitPullRequestArrow
-  }
+  },
+	[ROUTES.ORGANIZATION_INVITES]: {
+		title: "Запрошення",
+		icon: MailPlus
+	}
 };

@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 
     uploadData.append(
       "UPLOADCARE_PUB_KEY",
-      process.env.NEXT_PUBLIC_UPLOADCARE_PUBLIC_KEY || ""
+      process.env.UPLOADCARE_PUBLIC_KEY || ""
     );
     uploadData.append("UPLOADCARE_STORE", "auto");
 

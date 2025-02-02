@@ -6,7 +6,7 @@ import { Image } from "@heroui/react";
 import { useEffect, useState } from "react";
 
 interface IDropzone {
-  value: File | null;
+  value: File | string | null;
   onChange: (file: File | null) => void;
 }
 
@@ -24,19 +24,19 @@ const UiDropzone = (props: IDropzone) => {
   });
 
   useEffect(() => {
-    if (props.value) {
+    if (props.value && typeof props.value !== "string") {
       const objectUrl = URL.createObjectURL(props.value);
-
       setPreview(objectUrl);
-
       return () => URL.revokeObjectURL(objectUrl);
-    }
+    } else if (props.value) {
+			setPreview(props.value);
+		}
   }, [props.value]);
 
   return (
     <div
       {...getRootProps()}
-      className="border border-default-200 p-4 rounded-lg text-center cursor-pointer max-w-4xl"
+      className="border border-default-200 p-4 rounded-lg text-center cursor-pointer"
     >
       <input {...getInputProps()} />
       <div className="flex flex-col h-full gap-2 items-center justify-center">

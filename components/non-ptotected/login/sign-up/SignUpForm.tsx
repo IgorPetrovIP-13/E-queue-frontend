@@ -116,7 +116,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
         <Divider />
         <div className="flex justify-end">
           <Button
-            color="secondary"
+            color="primary"
             isDisabled={
               !isValid || isSubmitting || Object.keys(dirtyFields).length === 0
             }

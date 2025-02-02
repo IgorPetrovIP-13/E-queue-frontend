@@ -1,5 +1,5 @@
 export interface IFormValues {
-  avatar: File | null;
+  avatar: File | string | null;
   name: string;
   surname: string;
   email: string;

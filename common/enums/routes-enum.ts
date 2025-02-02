@@ -9,5 +9,6 @@ export enum ROUTES {
   MY_QUEUES = "/i/my-queues",
   CREATE_ORGANIZATION = "/i/create-organization",
   MY_ORGANIZATIONS = "/i/my-organizations",
-  ORGANIZATION_REQUESTS = "/i/organization-requests"
+  ORGANIZATION_REQUESTS = "/i/organization-requests",
+	ORGANIZATION_INVITES = "/i/organization-invites"
 }

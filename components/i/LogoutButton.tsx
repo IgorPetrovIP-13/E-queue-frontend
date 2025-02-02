@@ -2,21 +2,17 @@
 
 import { Button } from "@heroui/button";
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   useDisclosure
 } from "@heroui/react";
 import { useMutation } from "@tanstack/react-query";
-import { LogOut, TriangleAlert } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { authService } from "@/services/auth/auth.service";
 import { ROUTES } from "@/common/enums/routes-enum";
 import { formatAxiosError } from "@/common/axios/error";
 import { openToast } from "@/utils/openToast";
+import LogoutModal from "./LogoutModal";
 
 export default function LogoutButton() {
   const router = useRouter();
@@ -53,41 +49,12 @@ export default function LogoutButton() {
           <span className="inline md:hidden lg:inline">Вихід</span>
         </div>
       </Button>
-      <Modal
+      <LogoutModal
         isOpen={isOpen}
-        onOpenChange={onOpenChange}
-      >
-        <ModalContent>
-          {onClose => (
-            <>
-              <ModalHeader className="text-warning flex items-center gap-2">
-                <TriangleAlert size={20} />
-                Вихід з системи
-              </ModalHeader>
-              <ModalBody>
-                Після виходу з системи вам доведеться повторно авторизуватися.
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  color="danger"
-                  isLoading={isPending}
-                  variant="flat"
-                  onPress={() => handleLogout(onClose)}
-                >
-                  Вийти
-                </Button>
-                <Button
-                  color="default"
-                  variant="flat"
-                  onPress={onClose}
-                >
-                  Відміна
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+        onSubmit={onClose => handleLogout(onClose)}
+				onOpenChange={onOpenChange}
+				isSubmitting={isPending}
+      />
     </>
   );
 }

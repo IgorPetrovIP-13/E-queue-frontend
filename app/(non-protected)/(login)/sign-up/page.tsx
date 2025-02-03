@@ -56,7 +56,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <Card className="w-xl">
+    <Card className="w-full max-w-lg">
       <CardHeader className="flex justify-between">
         <div className="flex items-center gap-2">
           <UserRoundPlus />

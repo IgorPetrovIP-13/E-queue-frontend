@@ -35,7 +35,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <Controller
             control={control}
             name="name"

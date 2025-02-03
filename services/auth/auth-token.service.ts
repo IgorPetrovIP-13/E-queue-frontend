@@ -11,7 +11,7 @@ export const getAccessToken = () => {
 export const setAccessToken = (accessToken: string) => {
   Cookies.set(TokensEnum.ACCESS_TOKEN, accessToken, {
     domain: "localhost",
-    sameSite: "strict",
+    sameSite: "Lax",
     expires: new Date(Date.now() + 15 * 60 * 1000)
   });
 };

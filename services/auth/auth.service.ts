@@ -21,6 +21,8 @@ class AuthService {
       data
     );
 
+    console.log(response.data.accessToken);
+
     setAccessToken(response.data.accessToken);
 
     return response.data.user;

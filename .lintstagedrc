@@ -1,6 +1,6 @@
 {
-  "*.js": "eslint --max-errors=0",
-  "*.jsx": "eslint --max-errors=0",
-  "*.ts": "eslint --max-errors=0",
-  "*.tsx": "eslint --max-errors=0"
+  "*.js": ["prettier --write", "eslint --fix"],
+  "*.jsx": ["prettier --write", "eslint --fix"],
+  "*.ts": ["prettier --write", "eslint --fix"],
+  "*.tsx": ["prettier --write", "eslint --fix"]
 }

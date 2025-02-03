@@ -19,7 +19,7 @@ export default function NonProtectedLayout({
           E-QUEUE
         </div>
         <p className="text-center text-sm text-gray-400">
-          © 2024 Ihor Petrov IP-13. All rights reserved.
+          © 2025 Ihor Petrov IP-13. All rights reserved.
         </p>
       </footer>
     </div>

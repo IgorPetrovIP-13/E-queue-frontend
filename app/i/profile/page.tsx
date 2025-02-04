@@ -51,14 +51,14 @@ export default function ProfilePage() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid, dirtyFields }
+    formState: { errors, isValid, dirtyFields }
   } = useForm<IFormValues>({
     resolver: zodResolver(updateUserSchema),
     mode: "onTouched",
     defaultValues: initialValues
   });
 
-  const { mutate: mutateUpdate } = useMutation({
+  const { mutate: mutateUpdate, isPending: isPendingUpdate } = useMutation({
     mutationKey: ["updateProfile"],
     mutationFn: (values: IUpdateProfileReq) =>
       profileService.updateProfile(values),
@@ -127,7 +127,7 @@ export default function ProfilePage() {
             dirtyFields={dirtyFields}
             errors={errors}
             handleSubmit={handleSubmit}
-            isSubmitting={isSubmitting}
+            isSubmitting={isPendingUpdate}
             isValid={isValid}
             onSubmit={onSubmit}
           />

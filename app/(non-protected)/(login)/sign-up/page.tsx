@@ -22,7 +22,7 @@ export default function SignUpPage() {
     control,
     reset,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid, dirtyFields }
+    formState: { errors, isValid, dirtyFields }
   } = useForm<IFormValues>({
     resolver: zodResolver(signUpSchema),
     mode: "onTouched",
@@ -31,7 +31,7 @@ export default function SignUpPage() {
 
   const router = useRouter();
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["signUp"],
     mutationFn: (data: ISignUpReq) => authService.signUp(data),
     onSuccess: data => {
@@ -52,7 +52,7 @@ export default function SignUpPage() {
       password: values.password
     };
 
-    mutate(payload);
+    await mutate(payload);
   };
 
   return (
@@ -70,7 +70,7 @@ export default function SignUpPage() {
           dirtyFields={dirtyFields}
           errors={errors}
           handleSubmit={handleSubmit}
-          isSubmitting={isSubmitting}
+          isSubmitting={isPending}
           isValid={isValid}
           onSubmit={onSubmit}
         />

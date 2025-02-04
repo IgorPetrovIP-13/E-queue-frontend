@@ -62,7 +62,7 @@ export default function CreateOrganizationPage() {
     control,
     reset,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid, dirtyFields }
+    formState: { errors, isValid, dirtyFields }
   } = useForm<IFormValues>({
     resolver: zodResolver(createOrganizationSchema),
     mode: "onTouched",
@@ -84,7 +84,7 @@ export default function CreateOrganizationPage() {
     mutate(preSendClear(payload));
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["createOrganization"],
     mutationFn: (data: ICreateOrganizationRequestReq) =>
       organizationRequestService.create(data),
@@ -124,7 +124,7 @@ export default function CreateOrganizationPage() {
           }}
           errors={errors}
           handleSubmit={handleSubmit}
-          isSubmitting={isSubmitting}
+          isSubmitting={isPending}
           isValid={isValid}
           orgConnectionTypes={connectionTypes}
           orgTypes={organizationTypes}

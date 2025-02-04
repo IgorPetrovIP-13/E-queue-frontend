@@ -7,6 +7,8 @@ export async function middleware(request: NextRequest) {
   const { url, cookies } = request;
   const { pathname } = new URL(url);
 
+  console.log(cookies.get(TokensEnum.REFRESH_TOKEN)?.value);
+
   const refreshToken = cookies.get(TokensEnum.REFRESH_TOKEN)?.value;
 
   const isApiRoute = pathname.startsWith("/api/");

@@ -10,7 +10,7 @@ export const getAccessToken = () => {
 
 export const setAccessToken = (accessToken: string) => {
   Cookies.set(TokensEnum.ACCESS_TOKEN, accessToken, {
-    sameSite: "strict",
+    sameSite: "none",
     secure: true,
     expires: new Date(Date.now() + 15 * 60 * 1000)
   });

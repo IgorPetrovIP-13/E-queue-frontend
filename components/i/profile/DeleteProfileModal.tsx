@@ -35,7 +35,8 @@ export default function DeleteProfileModal({
             </ModalHeader>
             <ModalBody>
               Видалення профілю незворотній процес. Після видалення ви втратите
-              доступ до всіх сервісів.
+              доступ до сервісу. Ващі організації будуть видалені.
+              <br /> Ви впевнені що хочете видалити профіль?
             </ModalBody>
             <ModalFooter>
               <Button
